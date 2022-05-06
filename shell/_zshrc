@@ -1,0 +1,30 @@
+# System
+alias cls='clear'
+alias ll='ls -g'
+alias rf='rm -rf '
+
+# Node
+alias i='pnpm i '
+alias x='pnpx '
+alias r='pnpm run '
+alias d='pnpm run dev'
+alias s='pnpm run serve'
+alias b='pnpm run build'
+alias ss='pnpm run start'
+alias un='nun '
+alias id='ni -d '
+alias ig='pnpm i -g '
+
+alias deps='pnpx taze minor -w'
+
+# Git
+alias gl='git pull '
+alias gp='git push '
+alias gc='git clone '
+alias gm='git add . && git commit -m '
+alias branchs='git branch -a'
+alias checkout='git checkout -b '
+
+# SSH
+alias sshgen='ssh-keygen -t ed25519 -C '
+alias sshkey='cat ~/.ssh/id_ed25519.pub'
