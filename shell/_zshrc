@@ -15,7 +15,20 @@ alias cls='clear'
 alias ll='ls -g'
 alias rf='rm -rf '
 alias ..='cd ..'
-alias .='code ./'
+alias .='codeAlias'
+
+function codeAlias() {
+  if [ $# -eq 0 ]; then
+    # 如果没有参数，则执行 code ./
+    command code ./
+  elif [ $# -eq 1 ]; then
+    # 如果只有一个参数，则执行 code $1
+    command code "$1"
+  else
+    # 如果有多个参数，则输出错误信息
+    echo "Usage: code [path]"
+  fi
+}
 
 # Node
 alias i='pnpm i '
