@@ -1,3 +1,5 @@
+export ZSH="$HOME/.oh-my-zsh"
+
 # git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
 # ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 ZSH_THEME="spaceship"
@@ -10,14 +12,17 @@ plugins=(
   zsh-autosuggestions
 )
 
+# 不显示执行时间
+SPACESHIP_EXEC_TIME_SHOW=false
+
 source $ZSH/oh-my-zsh.sh
 
 # System
 alias cls='clear'
 alias ll='ls -g'
 alias rf='rm -rf '
-alias ..='cd ..'
 alias sc='cd /Volumes/code'
+alias ..='cd ..'
 
 alias .='codeAlias'
 
@@ -44,20 +49,21 @@ alias s='nr serve'
 alias b='nr build'
 alias ss='nr start'
 alias un='nun '
-alias id='ni -d '
+alias id='ni -D '
 alias ig='pnpm i -g '
 alias re="nr release"
 alias lint='nr lint'
 alias lintf='nr lint --fix'
+alias create='pnpm create '
 
 alias deps='pnpx taze minor -w'
 
 # Git
-alias gp='git push '
+alias gh='git push '
 alias gc='git chechout '
+alias clone='git clone '
 alias gl='git pull --rebase'
-alias gpf='git push --force'
-alias gc='git clone '
+alias ghf='git push --force'
 alias gm='git add . && git commit -m "$1"'
 alias branchs='git branch -a'
 alias checkout='git checkout -b '
