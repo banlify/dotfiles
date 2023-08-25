@@ -1,73 +1,74 @@
-export ZSH="$HOME/.oh-my-zsh"
-
-# git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-# ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-ZSH_THEME="spaceship"
-
-# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-# git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
-plugins=(
-  git
-  zsh-autosuggestions
-)
-
-# 不显示执行时间
-SPACESHIP_EXEC_TIME_SHOW=false
-
-source $ZSH/oh-my-zsh.sh
+alias sc='cd /Volumes/code'
 
 # System
-alias cls='clear'
 alias ll='ls -g'
-alias rf='rm -rf '
-alias sc='cd /Volumes/code'
-alias ..='cd ..'
+alias cls='clear'
+alias rmf='rm -rf '
 
+alias ..='cd ..'
 alias .='codeAlias'
 
 function codeAlias() {
   if [ $# -eq 0 ]; then
     # 如果没有参数，则执行 code ./
-    command code ./
+    command code -r ./
   elif [ $# -eq 1 ]; then
     # 如果只有一个参数，则执行 code $1
-    command code "$1"
+    command code -r "$1"
   else
     # 如果有多个参数，则输出错误信息
     echo "Usage: code [path]"
   fi
 }
 
-
 # Node
-alias i='pnpm i --prefer-offline'
-alias x='pnpx '
-alias r='nr '
-alias d='nr dev'
-alias s='nr serve'
-alias b='nr build'
-alias ss='nr start'
+alias i='pnpm i '
+alias x='pnpx -y '
+alias r='bun run '
+alias d='bun run dev'
+alias s='bun run serve'
+alias b='bun run build'
+alias ss='bun run start'
+alias ci='code . && pnpm i'
 alias un='nun '
 alias id='ni -D '
 alias ig='pnpm i -g '
-alias re="nr release"
-alias lint='nr lint'
-alias lintf='nr lint --fix'
-alias create='pnpm create '
-
 alias deps='pnpx taze minor -w'
+alias xni='npx --no-install '
 
 # Git
-alias gh='git push '
-alias gc='git chechout '
-alias clone='git clone '
-alias gl='git pull --rebase'
-alias ghf='git push --force'
-alias gm='git add . && git commit -m "$1"'
+alias gl='git pull '
+alias gp='git push '
+alias gc='git clone '
+alias gm='git add . && git commit -m '
 alias branchs='git branch -a'
 alias checkout='git checkout -b '
+alias undo="git reset --soft HEAD^"
 
 # SSH
 alias sshgen='ssh-keygen -t ed25519 -C '
 alias sshkey='cat ~/.ssh/id_ed25519.pub'
+
+# bun completions
+[ -s "/Users/admin/.bun/_bun" ] && source "/Users/admin/.bun/_bun"
+
+# bun
+export BUN_INSTALL="/Users/admin/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+# bun end
+
+# pnpm
+export PNPM_HOME="/Users/admin/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+# 只展示当前目录, 修改 1 为更大的数字可以展示更多目录
+PS1="%2d $ "
+
+# zsh 的语法高亮插件
+# brew install zsh-syntax-highlighting
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# zsh 自动提示
+# git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
